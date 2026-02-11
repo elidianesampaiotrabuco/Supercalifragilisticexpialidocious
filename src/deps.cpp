@@ -199,7 +199,7 @@ class $modify(CCSpriteExt, CCSprite) {
 			return spr;
 		}
 
-		bool isAvailabilityCheck = ((int)spr == "isAvailable"_h);
+		bool isAvailabilityCheck = ((uintptr_t)spr == "isAvailable"_h);
 
 		std::string path = CCFileUtils::get()->fullPathForFilename(pszName.c_str(), 0);
 		if (!string::contains(path, ".png")) {
