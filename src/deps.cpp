@@ -413,7 +413,7 @@ class $modify(MenuLayerExt, MenuLayer) {
 			}
 			//popup
 			Ref popup = MDPopup::create(
-				"THE DEPENDENCIES...", stream.str(), "Restart", "Open Geode", [](bool a) {
+				"YOU FORGOT SOME MODS...", stream.str(), "Restart", "Open Geode", [](bool a) {
 					if (a) {
 						GameManager::get()->fadeInMusic("menuLoop/OM_Desolate.mp3");
 						CCDirector::get()->m_pRunningScene->stopAllActions();
