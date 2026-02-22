@@ -5,3 +5,4 @@ A mod for Geometry Dash, that adds in a lot of content. Yeah, i dunno what to sa
 * MediaStickyVideoEditor640: Created this mod
 * PixelGuy: Made Baldi's Basics Times
 * mystman12: Made the whole Baldi's Basics series
+* Nickelodeon: Made the 90's remix of the company itself
