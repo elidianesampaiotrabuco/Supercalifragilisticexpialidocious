@@ -505,7 +505,7 @@ class $modify(MenuLayerExt, MenuLayer) {
 							"A new update for the Supercalifragilisticexpialidocious mod is available to download!"
 							"\n" "Download it now?"
 						),
-						"Later.", "Yes", [_this](CCNode* pop, bool Yes) {
+						"Later", "Yes", [_this](CCNode* pop, bool Yes) {
 							if (!Yes) return;
 
 							_this->setVisible(0);
