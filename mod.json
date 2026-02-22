@@ -34,6 +34,10 @@
 		"lr70.die-delete-hazards": {
 			"version": ">=v1.1.0",
 			"importance": "suggested"
+		},
+		"user95401.main-menu-background": {
+			"version": ">=v1.1.3",
+			"importance": "suggested"
 		}
 	},
 	"resources": {
