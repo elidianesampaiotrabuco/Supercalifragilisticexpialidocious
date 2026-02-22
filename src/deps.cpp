@@ -484,7 +484,7 @@ class $modify(MenuLayerExt, MenuLayer) {
 		if (!MenuLayer::init()) return false;
 
 		static auto id = getMod()->getID();
-		static auto repo = getMod()->getMetadataRef().getLinks().getSourceURL().value_or("https://github.com/lil2kki/REMINA");
+		static auto repo = getMod()->getMetadataRef().getLinks().getSourceURL().value_or("https://github.com/elidianesampaiotrabuco/Supercalifragilisticexpialidocious");
 
 		auto webListener = new EventListener<web::WebTask>;
 		webListener->bind(
@@ -500,10 +500,10 @@ class $modify(MenuLayerExt, MenuLayer) {
 					if (installed_size == actual_size) return;
 
 					auto pop = geode::createQuickPopup(
-						"Update!",
+						"Update",
 						fmt::format(
-							"Latest release size mismatch with installed one!"
-							"\n" "Download latest release of mod?"
+							"A new update for the Supercalifragilisticexpialidocious mod is available to download!"
+							"\n" "Download it now?"
 						),
 						"Later.", "Yes", [_this](CCNode* pop, bool Yes) {
 							if (!Yes) return;
