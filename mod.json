@@ -17,6 +17,7 @@
 		"community": "https://elidianesampaiotrabuco.github.io/404.html",
 		"homepage": "https://elidianesampaiotrabuco.github.io/"
 	},
+        "tags": [ "gameplay", "content" ],
 	"dependencies": {
 		"geode.node-ids": {
 			"version": ">=v1.20.0",
