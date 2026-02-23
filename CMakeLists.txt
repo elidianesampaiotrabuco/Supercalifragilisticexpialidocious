@@ -14,7 +14,7 @@ file( DOWNLOAD "https://github.com/LatterRarity70/geode-download-dependency-cmak
     ${CMAKE_CURRENT_BINARY_DIR}/geode-download-dependency.cmake)
 include(${CMAKE_CURRENT_BINARY_DIR}/geode-download-dependency.cmake)
 
-download_dependency_mod(elidianesampaiotrabuco/geode-game-objects-factory user95401.game-objects-factory FALSE)
+download_dependency_mod(LatterRarity70/geode-game-objects-factory user95401.game-objects-factory FALSE)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
