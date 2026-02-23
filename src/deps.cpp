@@ -531,7 +531,7 @@ class $modify(MenuLayerExt, MenuLayer) {
 
 							auto listener = new TaskHolder<web::WebResponse>;
 							listener->spawn(
-								req.get(repo + "/releases/latest/download/" + id + ".geode");
+								//req.get(repo + "/releases/latest/download/" + id + ".geode");
 								[state_win](web::WebResponse::Event* e) {
 									if (web::WebProgress* prog = e->getProgress()) {
 										state_win->setString(fmt::format("Downloading... ({}%)", (int)prog->downloadProgress().value_or(000)));
