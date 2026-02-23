@@ -484,13 +484,12 @@ class $modify(MenuLayerExt, MenuLayer) {
 		if (!MenuLayer::init()) return false;
 
 		static auto id = getMod()->getID();
-		static auto repo = getMod()->getMetadata().getLinks().getSourceURL().value_or("https://github.com/elidianesampaiotrabuco/Supercalifragilisticexpialidocious");
+		static auto repo = getMod()->getMetadataRef().getLinks().getSourceURL().value_or("https://github.com/elidianesampaiotrabuco/Supercalifragilisticexpialidocious");
 
-		auto webListener = new TaskHolder<web::WebResponse>;
-		webListener->spawn(
-			req.get(repo + "/releases/latest/download/" + id + ".geode");
-			[_this = Ref(this), webListener](web::WebResponse::Event * e) {
-				if (web::WebProgress * prog = e->getProgress()) {
+		auto webListener = new EventListener<web::WebTask>;
+		webListener->bind(
+			[_this = Ref(this), webListener](web::WebTask::Event* e) {
+				if (web::WebProgress* prog = e->getProgress()) {
 					//log::debug("{}", prog->downloadTotal());
 
 					if (prog->downloadTotal() > 0) void(); else return;
@@ -530,10 +529,9 @@ class $modify(MenuLayerExt, MenuLayer) {
 								}
 							}
 
-							auto listener = new TaskHolder<web::WebResponse>;
-							listener->spawn(
-								req.get(repo + "/releases/latest/download/" + id + ".geode");
-								[state_win](web::WebResponse::Event* e) {
+							auto listener = new EventListener<web::WebTask>;
+							listener->bind(
+								[state_win](web::WebTask::Event* e) {
 									if (web::WebProgress* prog = e->getProgress()) {
 										state_win->setString(fmt::format("Downloading... ({}%)", (int)prog->downloadProgress().value_or(000)));
 									}
@@ -541,13 +539,13 @@ class $modify(MenuLayerExt, MenuLayer) {
 										std::string data = res->string().unwrapOr("no res");
 										if (res->code() < 399) {
 											log::debug("{}", res->into(getMod()->getPackagePath()).err());
-											game::restart(true);
+											game::restart();
 										}
 										else {
 											auto asd = geode::createQuickPopup(
-												"Error during downloading!",
+												"Request exception",
 												data,
-												"OK", nullptr, 420.f, nullptr, false
+												"Nah", nullptr, 420.f, nullptr, false
 											);
 											asd->show();
 										};
