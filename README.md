@@ -1,7 +1,5 @@
 # Supercalifragilisticexpialidocious
 A mod for Geometry Dash, that adds in a lot of content. Yeah, i dunno what to say.
-## Note
-This mod is currently being ported to 2.208 and Geode 5.0! Be patient, the mod WILL be for 2.208 soon!
 ## Credits
 * lil2kki: Created REMINA GDPS and Gemetry Trash.
 * MediaStickyVideoEditor640: Created this mod
@@ -13,3 +11,5 @@ This mod is currently being ported to 2.208 and Geode 5.0! Be patient, the mod W
 * Amini Allight: Made one of his Backrooms textures, which i modified.
 * Valve: Made the Half-Life series
 * lambda777: Made his GD font pack
+
+https://sadlya.ps.fhgdps.com (this is to fix the server value being null, causing online features to not work)
