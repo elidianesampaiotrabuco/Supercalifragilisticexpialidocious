@@ -20,7 +20,7 @@
         "tags": [ "gameplay", "content" ],
 	"dependencies": {
 		"geode.node-ids": {
-			"version": ">=v1.22.0",
+			"version": ">=v1.23.0",
 			"importance": "suggested"
 		},
 		"prevter.imageplus": {
