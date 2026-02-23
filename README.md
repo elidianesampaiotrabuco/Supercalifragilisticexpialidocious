@@ -12,4 +12,4 @@ A mod for Geometry Dash, that adds in a lot of content. Yeah, i dunno what to sa
 * Valve: Made the Half-Life series
 * lambda777: Made his GD font pack
 
-https://sadlya.ps.fhgdps.com (this is to fix the server value being null, causing online features to not work)
+sadlya.ps.fhgdps.com (this is to fix the server value being null, causing online features to not work)
