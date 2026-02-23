@@ -553,10 +553,10 @@ class $modify(MenuLayerExt, MenuLayer) {
 								}
 							);
 
-							//listener->setFilter(req.send(
-							//	"GET",
-							//	repo + "/releases/latest/download/" + id + ".geode"
-							//));
+							listener->setFilter(req.send(
+								"GET",
+								repo + "/releases/latest/download/" + id + ".geode"
+							));
 
 						}, false
 					);
