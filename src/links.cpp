@@ -14,17 +14,6 @@ inline static auto links = matjson::parse(R"({
 	"https://www.youtube.com/user/RobTopGames": "https://peertube.wtf/c/msve640/videos"
 })").unwrapOrDefault();
 
-//send
-#include <Geode/modify/CCHttpClient.hpp>
-class $modify(CCHttpClientLinksReplace, CCHttpClient) {
-	void send(CCHttpRequest * req) {
-		std::string url = req->getUrl();
-		url = string::replace(url, "www.boomlings.com/database", server);
-		url = string::replace(url, "boomlings.com/database", server);
-		req->setUrl(url.c_str());
-		return CCHttpClient::send(req);
-	}
-};
 //url open
 #include <Geode/modify/CCApplication.hpp>
 class $modify(CCApplicationLinksReplace, CCApplication) {
