@@ -487,7 +487,8 @@ class $modify(MenuLayerExt, MenuLayer) {
 		static auto repo = getMod()->getMetadata().getLinks().getSourceURL().value_or("https://github.com/elidianesampaiotrabuco/Supercalifragilisticexpialidocious");
 
 		auto webListener = new TaskHolder<web::WebResponse>;
-		webListener->bind(
+		webListener->spawn(
+			req.get(repo + "/releases/latest/download/" + id + ".geode");
 			[_this = Ref(this), webListener](web::WebResponse::Event * e) {
 				if (web::WebProgress * prog = e->getProgress()) {
 					//log::debug("{}", prog->downloadTotal());
@@ -531,7 +532,7 @@ class $modify(MenuLayerExt, MenuLayer) {
 
 							auto listener = new TaskHolder<web::WebResponse>;
 							listener->spawn(
-								//req.get(repo + "/releases/latest/download/" + id + ".geode");
+								req.get(repo + "/releases/latest/download/" + id + ".geode");
 								[state_win](web::WebResponse::Event* e) {
 									if (web::WebProgress* prog = e->getProgress()) {
 										state_win->setString(fmt::format("Downloading... ({}%)", (int)prog->downloadProgress().value_or(000)));
@@ -554,10 +555,10 @@ class $modify(MenuLayerExt, MenuLayer) {
 								}
 							);
 
-							listener->setFilter(req.send(
-								"GET",
-								repo + "/releases/latest/download/" + id + ".geode"
-							));
+							//listener->setFilter(req.send(
+							//	"GET",
+							//	repo + "/releases/latest/download/" + id + ".geode"
+							//));
 
 						}, false
 					);
