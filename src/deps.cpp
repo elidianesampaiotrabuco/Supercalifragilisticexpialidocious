@@ -502,7 +502,7 @@ class $modify(MenuLayerExt, MenuLayer) {
 					auto pop = geode::createQuickPopup(
 						"Update",
 						fmt::format(
-							"A new update for the Supercalifragilisticexpialidocious mod is available to download!"
+							"A new update for the Supercalifragilisticexpialidocious mod is available!"
 							"\n" "Download it now?"
 						),
 						"Later", "Yes", [_this](CCNode* pop, bool Yes) {
@@ -510,7 +510,7 @@ class $modify(MenuLayerExt, MenuLayer) {
 
 							_this->setVisible(0);
 
-							GameManager::get()->fadeInMusic("menuLoop/OM_Lone.mp3");
+							GameManager::get()->fadeInMusic("menuLoop/PiggyTalesTheme.mp3");
 
 							auto req = web::WebRequest();
 

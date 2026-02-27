@@ -8,6 +8,8 @@
 * Added the ability to change the account ID
 * CMake will now attempt to download Geode if it wasn't found (UNFINISHED)
 * Changed some strings
+* New music that plays when updating this mod in-game
+* The BB+ plus icons, from ABNCG:R, have returned!
 
 # v1.0.0-beta.1
 * Initial beta release.
