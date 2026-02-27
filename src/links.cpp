@@ -2,7 +2,7 @@
 
 using namespace geode::prelude;
 
-inline static std::string server = "sadlya.ps.fhgdps.com";
+inline static std::string server = "hsjagak.ps.fhgdps.com";
 inline static auto links = matjson::parse(R"({
 	"asdasd": "asdasd",
 	"https://www.boomlings.com/GDEditor": "https://github.com/lil2kki/REMINA/wiki/Editor-Guide-(New-Features-List)#",
