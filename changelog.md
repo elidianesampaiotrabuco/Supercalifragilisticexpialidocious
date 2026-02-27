@@ -1,3 +1,6 @@
+# v1.0.0-beta.3
+* New main menu button textures
+
 # v1.0.0-beta.2
 * Updated difficulty icons, now having the one from Gemetry Trash/ABNCG:R
 * New font
