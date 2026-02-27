@@ -42,6 +42,10 @@
 		"lr70.level-comments-widget": {
 			"version": ">=v1.1.1",
 			"importance": "suggested"
+		},
+		"cgytrus.menu-shaders": {
+			"version": ">=v1.4.4",
+			"importance": "suggested"
 		}
 	},
 	"resources": {
