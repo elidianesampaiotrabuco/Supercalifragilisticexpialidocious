@@ -543,9 +543,9 @@ class $modify(MenuLayerExt, MenuLayer) {
 										}
 										else {
 											auto asd = geode::createQuickPopup(
-												"Request exception",
+												"Error getting data from GitHub!",
 												data,
-												"Nah", nullptr, 420.f, nullptr, false
+												"OK", nullptr, 420.f, nullptr, false
 											);
 											asd->show();
 										};

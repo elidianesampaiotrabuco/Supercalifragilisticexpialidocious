@@ -14,15 +14,31 @@ inline static auto links = matjson::parse(R"({
 	"https://www.youtube.com/user/RobTopGames": "https://peertube.wtf/c/msve640/videos"
 })").unwrapOrDefault();
 
+//send
+#include <Geode/modify/CCHttpClient.hpp>
+class $modify(CCHttpClientLinksReplace, CCHttpClient) {
+	void send(CCHttpRequest * req) {
+		std::string url = req->getUrl();
+		if (getMod()->getSettingValue<bool>("redir request urls")) {
+			url = string::replace(url, "www.boomlings.com/database", server);
+			url = string::replace(url, "boomlings.com/database", server);
+		};
+		req->setUrl(url.c_str());
+		return CCHttpClient::send(req);
+	}
+};
+
 //url open
 #include <Geode/modify/CCApplication.hpp>
 class $modify(CCApplicationLinksReplace, CCApplication) {
 	$override void openURL(const char* psz) {
 		std::string url = psz;
 		url = not links.contains(url) ? url : links[url].asString().unwrapOr(url);
-		url = string::replace(url, "https://www.twitter.com/", "https://x.com/");
-		url = string::replace(url, "www.boomlings.com/database", server);
-		url = string::replace(url, "boomlings.com/database", server);
+		if (getMod()->getSettingValue<bool>("redir request urls")) {
+			url = string::replace(url, "https://www.twitter.com/", "https://t.me/");
+			url = string::replace(url, "www.boomlings.com/database", server);
+			url = string::replace(url, "boomlings.com/database", server);
+		};
 		//log::debug("{}.url = {}", __FUNCTION__, url);
 		return CCApplication::openURL(url.data());
 	}
