@@ -2,7 +2,7 @@
 
 using namespace geode::prelude;
 
-inline static std::string server = Mod::get()->getDescription().value_or("sadlya.ps.fhgdps.com");
+inline static std::string server = "sadlya.ps.fhgdps.com";
 inline static auto links = matjson::parse(R"({
 	"asdasd": "asdasd",
 	"https://www.boomlings.com/GDEditor": "https://github.com/lil2kki/REMINA/wiki/Editor-Guide-(New-Features-List)#",
@@ -24,7 +24,7 @@ class $modify(CCHttpClientLinksReplace, CCHttpClient) {
 			url = string::replace(url, "boomlings.com/database", server);
 		};
 		req->setUrl(url.c_str());
-		log::debug("null check: ", server);
+		log::info("null check: ", server); // debug actually
 		return CCHttpClient::send(req);
 	}
 };
