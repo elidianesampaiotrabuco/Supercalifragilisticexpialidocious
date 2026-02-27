@@ -52,7 +52,10 @@ class $modify(FLAlertLayerExt, FLAlertLayer) {
 #include <Geode/modify/LoadingLayer.hpp>
 class $modify(LoadingLayerExt, LoadingLayer) {
 	bool init(bool refresh) {
+		srand(time(0)); //bool(rand() % 2)
+
 		if (!LoadingLayer::init(refresh)) return false;
+		pLoadingLayerRef.swap(this);
 
 		if (Ref a = typeinfo_cast<CCSprite*>(querySelector("bg-texture"))) {
 			a->setDisplayFrame(CCSprite::create("edit_barBG_001.png")->displayFrame());
@@ -79,6 +82,27 @@ class $modify(LoadingLayerExt, LoadingLayer) {
 		CCFileUtils::get()->m_fullPathCache["shop3.mp3"] = walls;
 		CCFileUtils::get()->m_fullPathCache["shop4.mp3"] = walls;
 		CCFileUtils::get()->m_fullPathCache["shop5.mp3"] = walls;
+
+		GameManager::get()->fadeInMusic("loading_theme.mp3");
+
+		{
+			auto verLabel = CCLabelBMFontAnimated::createWithBMFont(
+				fmt::format(
+					"OS: {}" "\n"
+					"GD Version: {}" "\n"
+					"Loader Version: {}",
+					GEODE_PLATFORM_NAME,
+					Mod::get()->getVersion().toVString(),
+					Mod::get()->getMetadata().getGeodeVersion().toVString()
+				),
+				fmt::format("gjFont{:02d}.fnt", rand() % 60).c_str(),
+				kCCTextAlignmentLeft
+			);
+			verLabel->limitLabelWidth(92.f, 0.5f, 0.1f);
+			verLabel->setPositionY(this->getContentHeight());
+			verLabel->setAnchorPoint(CCPoint(-0.05f, 1.1f));
+			this->addChild(verLabel);
+		};
 
 		return true;
 	}
@@ -121,37 +145,4 @@ class $modify(EditAccountID_FLAlertLayer, FLAlertLayer) {
 			};
 		}
 	};
-};
-
-#include <Geode/modify/LoadingLayer.hpp>
-class $modify(LoadingLayerExt, LoadingLayer) {
-	$override bool init(bool p0) {
-		srand(time(0)); //bool(rand() % 2)
-
-		auto rtn = LoadingLayer::init(p0);
-		pLoadingLayerRef.swap(this);
-
-		GameManager::get()->fadeInMusic("loading_theme.mp3");
-
-		{
-			auto verLabel = CCLabelBMFontAnimated::createWithBMFont(
-				fmt::format(
-					"OS: {}" "\n"
-					"GD Version: {}" "\n"
-					"Loader Version: {}",
-					GEODE_PLATFORM_NAME,
-					Mod::get()->getVersion().toVString(),
-					Mod::get()->getMetadata().getGeodeVersion().toVString()
-				),
-				fmt::format("gjFont{:02d}.fnt", rand() % 60).c_str(),
-				kCCTextAlignmentLeft
-			);
-			verLabel->limitLabelWidth(92.f, 0.5f, 0.1f);
-			verLabel->setPositionY(this->getContentHeight());
-			verLabel->setAnchorPoint(CCPoint(-0.05f, 1.1f));
-			this->addChild(verLabel);
-		};
-
-		return rtn;
-	}
 };
