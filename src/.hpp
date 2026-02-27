@@ -12,6 +12,7 @@ using namespace geode::prelude;
 #include <regex>
 
 #include <libs/httplib.h>
+#include <libs/CCLabelBMFontAnimated.h>
 
 class DataNode : public CCNode {
 public:
@@ -103,4 +104,6 @@ namespace geode::cocos {
 
 		return ret;
 	}
+
+	auto pLoadingLayerRef = Ref<LoadingLayer>(nullptr);
 }

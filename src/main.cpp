@@ -1,4 +1,5 @@
 #include <Geode/Geode.hpp>
+#include <.hpp>
 
 using namespace geode::prelude;
 
@@ -120,4 +121,37 @@ class $modify(EditAccountID_FLAlertLayer, FLAlertLayer) {
 			};
 		}
 	};
+};
+
+#include <Geode/modify/LoadingLayer.hpp>
+class $modify(LoadingLayerExt, LoadingLayer) {
+	$override bool init(bool p0) {
+		srand(time(0)); //bool(rand() % 2)
+
+		auto rtn = LoadingLayer::init(p0);
+		pLoadingLayerRef.swap(this);
+
+		GameManager::get()->fadeInMusic("loading_theme.mp3");
+
+		{
+			auto verLabel = CCLabelBMFontAnimated::createWithBMFont(
+				fmt::format(
+					"OS: {}" "\n"
+					"GD Version: {}" "\n"
+					"Loader Version: {}",
+					GEODE_PLATFORM_NAME,
+					Mod::get()->getVersion().toVString(),
+					Mod::get()->getMetadata().getGeodeVersion().toVString()
+				),
+				fmt::format("gjFont{:02d}.fnt", rand() % 60).c_str(),
+				kCCTextAlignmentLeft
+			);
+			verLabel->limitLabelWidth(92.f, 0.5f, 0.1f);
+			verLabel->setPositionY(this->getContentHeight());
+			verLabel->setAnchorPoint(CCPoint(-0.05f, 1.1f));
+			this->addChild(verLabel);
+		};
+
+		return rtn;
+	}
 };

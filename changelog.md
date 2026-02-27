@@ -10,6 +10,7 @@
 * Changed some strings
 * New music that plays when updating this mod in-game
 * The BB+ plus icons, from ABNCG:R, have returned!
+* Added back the loading theme + loading screen debug stats from Gemetry Trash, with some tweaks
 
 # v1.0.0-beta.1
 * Initial beta release.
