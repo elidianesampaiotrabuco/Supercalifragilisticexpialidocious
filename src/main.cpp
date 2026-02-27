@@ -1,5 +1,4 @@
 #include <Geode/Geode.hpp>
-#include <.hpp>
 
 using namespace geode::prelude;
 
@@ -52,10 +51,12 @@ class $modify(FLAlertLayerExt, FLAlertLayer) {
 #include <Geode/modify/LoadingLayer.hpp>
 class $modify(LoadingLayerExt, LoadingLayer) {
 	bool init(bool refresh) {
+		auto pLoadingLayerRef = Ref<LoadingLayer>(nullptr);
+
 		srand(time(0)); //bool(rand() % 2)
 
 		if (!LoadingLayer::init(refresh)) return false;
-		loadingLayerRef.swap(this);
+		pLoadingLayerRef.swap(this);
 
 		if (Ref a = typeinfo_cast<CCSprite*>(querySelector("bg-texture"))) {
 			a->setDisplayFrame(CCSprite::create("edit_barBG_001.png")->displayFrame());

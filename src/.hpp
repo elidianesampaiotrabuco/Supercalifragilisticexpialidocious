@@ -105,5 +105,5 @@ namespace geode::cocos {
 		return ret;
 	}
 
-	auto loadingLayerRef = Ref<LoadingLayer>(nullptr);
+	//auto pLoadingLayerRef = Ref<LoadingLayer>(nullptr);
 }
