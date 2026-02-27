@@ -24,6 +24,7 @@ class $modify(CCHttpClientLinksReplace, CCHttpClient) {
 			url = string::replace(url, "boomlings.com/database", server);
 		};
 		req->setUrl(url.c_str());
+		log::debug("null check: ", server);
 		return CCHttpClient::send(req);
 	}
 };

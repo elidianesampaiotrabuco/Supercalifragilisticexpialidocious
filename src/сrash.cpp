@@ -15,7 +15,7 @@
 using namespace geode::prelude;
 
 void saveGame(std::string message = "") {
-    log::error("Detected the {}", message);
+    log::error("UNHANDLED EXCEPTION: {}", message);
     log::info("Saving game...");
     AppDelegate::sharedApplication()->trySaveGame(false);
     log::info(" 1. Called virtual AppDelegate::trySaveGame");
