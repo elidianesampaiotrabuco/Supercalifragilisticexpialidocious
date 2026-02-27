@@ -12,6 +12,8 @@
 * The BB+ plus icons, from ABNCG:R, have returned!
 * Added back the loading theme + loading screen debug stats from Gemetry Trash, with some tweaks
 * Replace mentions of Telegram with X
+* New texture for Menu trigger
+* Slightly change the "zonal" thing
 
 # v1.0.0-beta.1
 * Initial beta release.
