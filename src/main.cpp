@@ -55,7 +55,7 @@ class $modify(LoadingLayerExt, LoadingLayer) {
 		srand(time(0)); //bool(rand() % 2)
 
 		if (!LoadingLayer::init(refresh)) return false;
-		pLoadingLayerRef.swap(this);
+		loadingLayerRef.swap(this);
 
 		if (Ref a = typeinfo_cast<CCSprite*>(querySelector("bg-texture"))) {
 			a->setDisplayFrame(CCSprite::create("edit_barBG_001.png")->displayFrame());
