@@ -4,6 +4,8 @@
 * Replaced the gradient thing with a spinning checkerboard edited with AI. Bruh.
 * Brought back the loading gear from ABNCG:R, now being remastered
 * New button textures in creator menu
+* New loading music (was a placeholder in beta 2)
+* Minor refactors
 
 # v1.0.0-beta.2
 * Updated difficulty icons, now having the one from Gemetry Trash/ABNCG:R

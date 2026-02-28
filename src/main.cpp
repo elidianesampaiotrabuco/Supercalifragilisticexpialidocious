@@ -85,7 +85,7 @@ class $modify(LoadingLayerExt, LoadingLayer) {
 		CCFileUtils::get()->m_fullPathCache["shop4.mp3"] = walls;
 		CCFileUtils::get()->m_fullPathCache["shop5.mp3"] = walls;
 
-		GameManager::get()->fadeInMusic("loading_theme.mp3");
+		GameManager::get()->fadeInMusic("NickelodeonBumper90s.mp3");
 
 		{
 			auto verLabel = CCLabelBMFontAnimated::createWithBMFont(
@@ -95,7 +95,7 @@ class $modify(LoadingLayerExt, LoadingLayer) {
 					"Loader Version: {}",
 					GEODE_PLATFORM_NAME,
 					Mod::get()->getVersion().toVString(),
-					Mod::get()->getMetadata().getGeodeVersion().toVString()
+					Mod::get()->getMetadataRef().getGeodeVersion().toVString()
 				),
 				fmt::format("gjFont{:02d}.fnt", rand() % 60).c_str(),
 				kCCTextAlignmentLeft
