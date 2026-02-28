@@ -1,4 +1,4 @@
-![Logo](msve640.supercalifragilisticexpialidocious/assets/sprites/logo4realz.png)
+![Logo](msve640.supercalifragilisticexpialidocious/logo4realz.png)
 A mod for Geometry Dash, that adds in a lot of content. Yeah, i dunno what to say.
 ## Credits
 * lil2kki: Created REMINA GDPS and Gemetry Trash.
