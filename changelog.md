@@ -3,6 +3,7 @@
 * Mod has a proper logo in its description now, lol
 * Replaced the gradient thing with a spinning checkerboard edited with AI. Bruh.
 * Brought back the loading gear from ABNCG:R, now being remastered
+* New button textures in creator menu
 
 # v1.0.0-beta.2
 * Updated difficulty icons, now having the one from Gemetry Trash/ABNCG:R
