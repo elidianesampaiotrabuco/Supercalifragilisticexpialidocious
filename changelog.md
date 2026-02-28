@@ -1,6 +1,7 @@
 # v1.0.0-beta.3
 * New main menu button textures
 * Mod has a proper logo in its description now, lol
+* Replaced the gradient thing with a spinning checkerboard edited with AI. Bruh.
 
 # v1.0.0-beta.2
 * Updated difficulty icons, now having the one from Gemetry Trash/ABNCG:R
