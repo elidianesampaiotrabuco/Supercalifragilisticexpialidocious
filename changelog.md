@@ -7,7 +7,9 @@
 * New loading music (was a placeholder in beta 2)
 * Minor refactors
 * Minor tweaks to platformer-specific triggers
-* Bug fixes
+* Some miscellaneous bug fixes
+* Fixed a bug, where gauntlets wouldn't be positioned correctly if there were too few of them (not by me, was by Jecket)
+* Add bugfix tag, since this mod fixes bugs and tweaks stuff from vanilla GD
 
 # v1.0.0-beta.2
 * Updated difficulty icons, now having the one from Gemetry Trash/ABNCG:R

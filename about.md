@@ -13,3 +13,4 @@ A mod for Geometry Dash, that adds in a lot of content. Yeah, i dunno what to sa
 * lambda777: Made his GD font pack
 * Douglas Black Heaton: Composed some Piggy Tales music.
 * Steven Barnegren: Made the CCLabelAnimated library
+* Jecket: Created the gauntlet position fix mod

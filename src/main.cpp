@@ -148,3 +148,18 @@ class $modify(EditAccountID_FLAlertLayer, FLAlertLayer) {
 		}
 	};
 };
+
+#include <Geode/modify/GauntletSelectLayer.hpp> // from gauntlets pos fix mod, decided to merge it here because why not
+class $modify(GauntletSelectLayerFix, GauntletSelectLayer) {
+	$override void setupGauntlets() {
+		GauntletSelectLayer::setupGauntlets();
+		findFirstChildRecursive<ExtendedLayer>(this,
+			[](ExtendedLayer* gauntlet_pages) {
+				if (gauntlet_pages->getChildrenCount() > 1) return false;
+				gauntlet_pages->setAnchorPoint(CCPointMake(1.f, 0.f));
+				gauntlet_pages->ignoreAnchorPointForPosition(false);
+				return true;
+			}
+		);
+	};
+};
