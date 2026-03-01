@@ -1,4 +1,3 @@
-#pragma once
 #include <.hpp>
 
 #include <Geode/modify/CCMenuItem.hpp>
