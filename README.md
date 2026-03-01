@@ -1,3 +1,5 @@
+mod is currently on hold atm. i'll make a mod for a different game with the same name as this mod, at a later time.
+
 # Supercalifragilisticexpialidocious
 A mod for Geometry Dash, that adds in a lot of content. Yeah, i dunno what to say.
 
@@ -20,4 +22,5 @@ This mod has memes as well, lol
 * Taco Bell: Did one of the commercials that featured Gidget.
 
 ## Note
+
 Credits from unknown people will have 3 question marks as their name, until it's actually known.
