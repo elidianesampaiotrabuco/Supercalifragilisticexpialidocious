@@ -104,7 +104,7 @@ namespace geode::cocos {
 		}
 
 		return ret;
-	}
+	};
 
 #include  <random>
 #include  <iterator>
@@ -116,7 +116,7 @@ namespace geode::cocos {
 			return start;
 		};
 		template<typename Iter>
-		Iter select_randomlyghdhsd(Iter start, Iter end) {
+		Iter select_randomly_alt(Iter start, Iter end) {
 			static std::random_device rd;
 			static std::mt19937 gen(rd());
 			return select_randomly(start, end, gen);
@@ -128,11 +128,11 @@ namespace geode::cocos {
 				rarity = rarity - 1;
 				varsVec.push_back(false);
 			}
-			auto rtn = *select_randomly(varsVec.begin(), varsVec.end());
+			auto rtn = *select_randomly_alt(varsVec.begin(), varsVec.end());
 			//log::debug("{}({}) = {} of {}", __func__, variants, rtn, varsVec);
 			return rtn;
 		}
-	};
+	}
 
 	//auto pLoadingLayerRef = Ref<LoadingLayer>(nullptr);
 }
