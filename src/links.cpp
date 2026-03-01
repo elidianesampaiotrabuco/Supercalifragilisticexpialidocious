@@ -5,6 +5,7 @@ using namespace geode::prelude;
 inline static std::string server = "sadlya.ps.fhgdps.com";
 inline static auto links = matjson::parse(R"({
 	"asdasd": "asdasd",
+    "https://clck.su/TzzLu": "https://x.com/MSVE640/status/1956551495807029466",
 	"https://www.boomlings.com/GDEditor": "https://github.com/lil2kki/REMINA/wiki/Editor-Guide-(New-Features-List)#",
 	"https://www.robtopgames.com": "https://elidianesampaiotrabuco.github.io",
 	"https://www.boomlings.com/database/accounts/accountManagement.php": "https://sadlya.ps.fhgdps.com",
@@ -22,7 +23,10 @@ class $modify(CCHttpClientLinksReplace, CCHttpClient) {
 		if (getMod()->getSettingValue<bool>("redir request urls")) {
 			url = string::replace(url, "www.boomlings.com/database", server);
 			url = string::replace(url, "boomlings.com/database", server);
-		};
+		}
+		else {
+			url = string::replace(url, server, "www.boomlings.com/database");
+		}
 		req->setUrl(url.c_str());
 		//log::info("null check: ", server); - debug actually
 		return CCHttpClient::send(req);
@@ -39,7 +43,10 @@ class $modify(CCApplicationLinksReplace, CCApplication) {
 			url = string::replace(url, "https://www.twitter.com/", "https://t.me/");
 			url = string::replace(url, "www.boomlings.com/database", server);
 			url = string::replace(url, "boomlings.com/database", server);
-		};
+		}
+		else {
+			url = string::replace(url, server, "www.boomlings.com/database");
+		}
 		//log::debug("{}.url = {}", __FUNCTION__, url);
 		return CCApplication::openURL(url.data());
 	}

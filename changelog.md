@@ -6,6 +6,8 @@
 * New button textures in creator menu
 * New loading music (was a placeholder in beta 2)
 * Minor refactors
+* Minor tweaks to platformer-specific triggers
+* Bug fixes
 
 # v1.0.0-beta.2
 * Updated difficulty icons, now having the one from Gemetry Trash/ABNCG:R
