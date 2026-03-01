@@ -68,7 +68,6 @@ namespace fs {
 	static inline auto err = std::error_code{};
 };
 
-
 namespace geode::cocos {
 	static inline std::string getClassName(cocos2d::CCObject* obj, bool removeNamespace = false) {
 		if (!obj) return "nullptr";
@@ -105,34 +104,6 @@ namespace geode::cocos {
 
 		return ret;
 	}
-
-#include  <random>
-#include  <iterator>
-	namespace geode::utils {
-		template<typename Iter, typename RandomGenerator>
-		Iter select_randomly(Iter start, Iter end, RandomGenerator& g) {
-			std::uniform_int_distribution<> dis(0, std::distance(start, end) - 1);
-			std::advance(start, dis(g));
-			return start;
-		};
-		template<typename Iter>
-		Iter select_randomly(Iter start, Iter end) {
-			static std::random_device rd;
-			static std::mt19937 gen(rd());
-			return select_randomly(start, end, gen);
-		}
-		bool rndb(int rarity = 1) {
-			auto varsVec = std::vector<bool>();
-			varsVec.push_back(true);
-			while (rarity > 0) {
-				rarity = rarity - 1;
-				varsVec.push_back(false);
-			}
-			auto rtn = *select_randomly(varsVec.begin(), varsVec.end());
-			//log::debug("{}({}) = {} of {}", __func__, variants, rtn, varsVec);
-			return rtn;
-		}
-	};
 
 	//auto pLoadingLayerRef = Ref<LoadingLayer>(nullptr);
 }

@@ -25,7 +25,7 @@ class $modify(PopupChihuahua, CCMenuItem) {
         if (getMod()->getSettingValue<bool>("gidget?")) {
             if (string::containsAny(this->getID(), { "play-button", "level-button" })) {
                 srand(time(0));
-                if (rndb(6)) {
+                if (CCRANDOM_0_1() > 0.3) {
                     auto pop = createPopup();
                     pop->show();
                     PopupChihuahua::onClick = [this]()
