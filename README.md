@@ -1,5 +1,7 @@
 # Supercalifragilisticexpialidocious
 A mod for Geometry Dash, that adds in a lot of content. Yeah, i dunno what to say.
+
+This mod has memes as well, lol
 ## Credits
 * lil2kki: Created REMINA GDPS and Gemetry Trash.
 * MediaStickyVideoEditor640: Created this mod
@@ -14,3 +16,8 @@ A mod for Geometry Dash, that adds in a lot of content. Yeah, i dunno what to sa
 * Douglas Black Heaton: Composed some Piggy Tales music.
 * Steven Barnegren: Made the CCLabelAnimated library
 * Jecket: Created the gauntlet position fix mod
+* ???: Owned the Gidget picture
+* Taco Bell: Did one of the commercials that featured Gidget.
+
+## Note
+Credits from unknown people will have 3 question marks as their name, until it's actually known.

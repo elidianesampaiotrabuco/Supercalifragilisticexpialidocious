@@ -35,10 +35,6 @@
 			"version": ">=v1.1.0",
 			"importance": "suggested"
 		},
-		"user95401.main-menu-background": {
-			"version": ">=v1.1.3",
-			"importance": "suggested"
-		},
 		"lr70.level-comments-widget": {
 			"version": ">=v1.1.1",
 			"importance": "suggested"
@@ -73,6 +69,12 @@
 		"add button sounds": {
 			"name": "add button sounds",
 			"description": "add sounds to buttons that don't have them",
+			"type": "bool",
+			"default": true
+		},
+		"gidget?": {
+			"name": "gidget?",
+			"description": "GIDGET THE TACO BELL CHIHUAHUA???",
 			"type": "bool",
 			"default": true
 		}

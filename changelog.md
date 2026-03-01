@@ -10,6 +10,8 @@
 * Some miscellaneous bug fixes
 * Fixed a bug, where gauntlets wouldn't be positioned correctly if there were too few of them (not by me, was by Jecket)
 * Add bugfix tag, since this mod fixes bugs and tweaks stuff from vanilla GD
+* Gidget. (joke addition)
+* Mod no longer depends on Main Menu Background, as that mod conflicts with Menu Shaders
 
 # v1.0.0-beta.2
 * Updated difficulty icons, now having the one from Gemetry Trash/ABNCG:R
