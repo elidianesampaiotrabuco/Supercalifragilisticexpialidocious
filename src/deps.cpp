@@ -372,7 +372,7 @@ class $modify(MenuLayerExt, MenuLayer) {
 		//texture pack
 		CCTexturePack xd;
 		xd.m_id = std::string(Mod::get()->getID());
-		xd.m_paths.push_back(R"(C:\Users\user95401\source\repos\REMINA\resources\)");
+		xd.m_paths.push_back(R"(D:\files\2026\February\repos\Supercalifragilisticexpialidocious\resources\)");
 		xd.m_paths.push_back(string::pathToString(Mod::get()->getResourcesDir().parent_path()).c_str());
 		xd.m_paths.push_back(string::pathToString(Mod::get()->getResourcesDir()).c_str());
 		log::debug("Adding texture pack: \"{}\"", xd.m_paths[0]);
@@ -489,7 +489,7 @@ bool init() {
 		if (!MenuLayer::init()) return false;
 
 		static auto id = std::string(getMod()->getID());
-		static auto repo = getMod()->getMetadata().getLinks().getSourceURL().value_or("https://github.com/lil2kki/REMINA");
+		static auto repo = getMod()->getMetadata().getLinks().getSourceURL().value_or("https://github.com/elidianesampaiotrabuco/Supercalifragilisticexpialidocious");
 
 		//size check
 		auto webListener = new async::TaskHolder<web::WebResponse>;

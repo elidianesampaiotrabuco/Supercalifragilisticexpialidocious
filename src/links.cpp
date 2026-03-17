@@ -2,17 +2,17 @@
 
 using namespace geode::prelude;
 
-inline static std::string server = Mod::get()->getDescription().value_or("remina.bccst.ru");
+inline static std::string server = "sadlya.ps.fhgdps.com";
 inline static auto links = matjson::parse(R"({
 	"asdasd": "asdasd",
-	"https://clck.su/TzzLu": "https://t.me/lil2kki_ch/6",
+    "https://clck.su/TzzLu": "https://x.com/MSVE640/status/1956551495807029466",
 	"https://www.boomlings.com/GDEditor": "https://github.com/lil2kki/REMINA/wiki/Editor-Guide-(New-Features-List)#",
-	"https://www.robtopgames.com": "https://t.me/lil2kki_ch/6",
-	"https://www.boomlings.com/database/accounts/accountManagement.php": "https://remina.bccst.ru/dashboard/",
-	"https://store.steampowered.com/recommended/recommendgame/322170": "https://gdpshub.com/gdps/900",
+	"https://www.robtopgames.com": "https://elidianesampaiotrabuco.github.io",
+	"https://www.boomlings.com/database/accounts/accountManagement.php": "https://sadlya.ps.fhgdps.com",
+	"https://store.steampowered.com/recommended/recommendgame/322170": "https://gdpshub.com/gdps/5556",
 	"https://discord.com/invite/geometrydash": "https://discord.gg/NXbbv2HZGg",
-	"https://twitter.com/robtopgames": "https://t.me/lil2kki_ch",
-	"https://www.youtube.com/user/RobTopGames": "https://www.youtube.com/channel/UCpgyf8EpL62WyDM2jWo4v1w"
+	"https://twitter.com/robtopgames": "https://x.com/MSVE640",
+	"https://www.youtube.com/user/RobTopGames": "https://peertube.wtf/c/msve640/videos"
 })").unwrapOrDefault();
 
 //send
@@ -37,7 +37,7 @@ class $modify(CCApplicationLinksReplace, CCApplication) {
 		std::string url = psz;
 		url = not links.contains(url) ? url : links[url].asString().unwrapOr(url);
 		if (getMod()->getSettingValue<bool>("redir request urls")) {
-			url = string::replace(url, "https://www.twitter.com/", "https://t.me/");
+			url = string::replace(url, "https://www.twitter.com/", "https://x.com/");
 			url = string::replace(url, "www.boomlings.com/database", server);
 			url = string::replace(url, "boomlings.com/database", server);
 		} else {
