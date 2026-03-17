@@ -26,17 +26,12 @@ void main() {
     }
     
     // Бинарный распад (только черный/белый)
-    if (mod(u_time * 1.0, 1.0) > 0.5) {
+    if (mod(u_time * 0.40, 1.0) > 0.95) {
         float bw = (color.r + color.g + color.b) / 3.0;
-        bw = step(0.5, bw);
+        bw = step(0.2, bw);
         color.rgb = vec3(bw);
     }
     
-    // Добавление цифрового шума
-    if (noise(uv + vec2(u_time, 0.0)) > 0.7) {
-        color.rgb += digitalNoise(uv) * 0.8;
-        color.rgb = clamp(color.rgb, 0.0, 1.0);
-    }
     
     // Мерцание
     //float flicker = sin(u_time * 30.0) * 0.9 + 0.9;

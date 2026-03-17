@@ -2,6 +2,79 @@
 
 using namespace geode::prelude;
 
+$on_game(TexturesLoaded) {
+	//mirrasovers
+	Ref mirrasovers = CCSprite::create();
+	mirrasovers->setAnchorPoint({ 0, 0 });
+	mirrasovers->setID("mirrasovers");
+	//add
+	OverlayManager::get()->addChild(mirrasovers);
+	//vars
+	auto name = fmt::format("mirrasovers{}.png", ++mirrasovers->m_nTag);
+	while (fileExistsInSearchPaths(name.c_str())) {
+		auto entry = CCSprite::create(name.c_str());
+		entry->CCNode::setScale(
+			CCDirector::get()->getWinSize().width / entry->getContentSize().width,
+			CCDirector::get()->getWinSize().height / entry->getContentSize().height
+		);
+		entry->setAnchorPoint({ 0, 0 });
+		mirrasovers->addChild(entry);
+		name = fmt::format("mirrasovers{}.png", ++mirrasovers->m_nTag);
+	}
+	//actions
+	mirrasovers->runAction(CCRepeatForever::create(CCSequence::create(
+		CCDelayTime::create(0.1f), CallFuncExt::create(
+			[mirrasovers] {
+				auto game = GameManager::get()->m_gameLayer;
+				mirrasovers->setVisible(!game or (game and not game->isRunning()));
+			}
+		), nullptr
+	)));
+	mirrasovers->runAction(CCRepeatForever::create(CCSequence::create(
+		CCDelayTime::create(0.1f), CallFuncExt::create(
+			[mirrasovers] {
+				if (rand() % 100 < 10) return;
+				//hide all children, then show a random one
+				for (auto child : mirrasovers->getChildrenExt()) 
+					child->setVisible(false);
+				//here 
+				auto hi = mirrasovers->getChildByType<CCSprite>(
+					rand() % mirrasovers->getChildrenCount()
+				); 
+				hi->setVisible(true);
+				hi->setFlipX(rand() % 2);
+				hi->setFlipY(rand() % 2);
+			}
+		), nullptr
+	)));
+	mirrasovers->setCascadeOpacityEnabled(true);
+	mirrasovers->setOpacity(60);
+};
+
+#include <Geode/modify/MenuGameLayer.hpp>
+class $modify(MenuGameLayerExt, MenuGameLayer) {
+	cocos2d::ccColor3B getBGColor(int index) {
+		return GameManager::get()->colorForIdx(index);
+	}
+	virtual void update(float dt) {
+		MenuGameLayer::update(rand() % 44 > 1 ? dt : -(dt * 2));
+	};
+};
+
+#include <Geode/modify/GameManager.hpp>
+class $modify(IconHackExt, GameManager) {
+	void checkUsedIcons() { 
+		"do nothing here :3";
+	}
+	bool isIconUnlocked(int id, IconType type) { 
+		if (rand() % 2) return true;
+		return GameManager::isIconUnlocked(id, type);
+	}
+	bool isColorUnlocked(int id, UnlockType type) {
+		if (rand() % 2) return true;
+		return GameManager::isColorUnlocked(id, type);
+	}
+};
 
 #include <Geode/modify/GameManager.hpp>
 class $modify(GameManagerSetsForGV, GameManager) {
@@ -24,16 +97,10 @@ class $modify(MoreOptionsLayerExt, MoreOptionsLayer) {
 
 #include <Geode/modify/CCMenuItemSpriteExtra.hpp>
 class $modify(CCMenuItemSpriteExtraExt, CCMenuItemSpriteExtra) {
-	$override void selected() {
-		if (m_selectSound.empty()) this->m_selectSound = "menuItemSelectSound.ogg";
-		if (m_activateSound.empty()) this->m_activateSound = "menuItemActivateSound.ogg";
-		if (auto spr = typeinfo_cast<CCNodeRGBA*>(this->getNormalImage())) {
-			spr->setCascadeColorEnabled(1);
-			spr->setCascadeOpacityEnabled(1);
-			if (spr->getColor() == ccWHITE) {
-				this->m_animationEnabled = this->m_animationType == MenuAnimationType::Move;
-				this->m_colorEnabled = this->m_animationType == MenuAnimationType::Scale;
-			};
+	void selected() {
+		if (getMod()->getSettingValue<bool>("add button sounds")) {
+			if (m_selectSound.empty()) this->m_selectSound = "menuItemSelectSound.ogg";
+			if (m_activateSound.empty()) this->m_activateSound = "menuItemActivateSound.ogg";
 		}
 		return CCMenuItemSpriteExtra::selected();
 	}
@@ -49,8 +116,18 @@ class $modify(FLAlertLayerExt, FLAlertLayer) {
 		if (!FLAlertLayer::init(
 			delegate, title, desc, btn1, btn2, width, scroll, height, textScale
 		)) return false;
+		//nothing
 		return true;
 	};
+	void show() {
+		//put popup in next scene, not transition
+		m_scene = m_scene ? m_scene : CCDirector::get()->getRunningScene();
+		if (auto trans = typeinfo_cast<CCTransitionScene*>(m_scene)) {
+			m_scene = trans->m_pInScene;
+		}
+
+		FLAlertLayer::show();
+	}
 };
 
 #include <Geode/modify/LoadingLayer.hpp>
@@ -84,6 +161,50 @@ class $modify(LoadingLayerExt, LoadingLayer) {
 		CCFileUtils::get()->m_fullPathCache["shop4.mp3"] = walls;
 		CCFileUtils::get()->m_fullPathCache["shop5.mp3"] = walls;
 
+	    CCFileUtils::get()->m_fullPathCache["StayInsideMe.mp3"] = CCFileUtils::get()->fullPathForFilename(
+			"menuLoop/10008531..mp3", 0
+		);
+
 		return true;
 	}
+};
+
+
+#include <Geode/modify/FLAlertLayer.hpp>
+class $modify(EditAccountID_FLAlertLayer, FLAlertLayer) {
+	void trySaveValue(float) {
+		if (Ref ew = GameManager::get()) ew->save();
+		if (Ref aw = Notification::create("Saved!")) aw->show();
+	}
+	void show() {
+		FLAlertLayer::show();
+		
+		if (Ref casted = typeinfo_cast<AccountLoginLayer*>(this)) {
+			// input
+			if (Ref accm = GJAccountManager::get()) if (Ref inp = TextInput::create(62.f, fmt::format("{}", accm->m_accountID).c_str())) {
+				// preset value
+				inp->setString(fmt::format("{}", accm->m_accountID).c_str());
+				// callback
+				inp->setCallback(
+					[inp = Ref(inp)](const std::string& p0) {
+						if (Ref manager = GJAccountManager::get()) manager->m_accountID = utils::numFromString<int>(
+							p0
+						).unwrapOr(manager->m_accountID);
+						if (inp) inp->unschedule(schedule_selector(EditAccountID_FLAlertLayer::trySaveValue));
+						if (inp) inp->scheduleOnce(schedule_selector(EditAccountID_FLAlertLayer::trySaveValue), 0.5f);
+					}
+				);
+				// position
+				inp->setPosition({ 145.000f, -86.000f });
+				// label
+				if (Ref inpInner = inp->getInputNode()) {
+					Ref lbl = CCLabelBMFont::create("Account ID:\n \n \n \n ", "bigFont.fnt");
+					if (lbl) lbl->setScale(0.400f);
+					if (lbl) inpInner->addChild(lbl, 1, "inp-label"_h);
+				}
+				// add to menu
+				if (Ref menu = this->m_buttonMenu) menu->addChild(inp);
+			};
+		}
+	};
 };

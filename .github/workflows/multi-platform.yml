@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - '**'
+      - 'master'
 
 jobs:
 
@@ -25,11 +25,11 @@ jobs:
         - name: macOS
           os: macos-latest
 
-        - name: Android32
-          os: ubuntu-latest
-          target: Android32
+#        - name: Android32
+#          os: ubuntu-latest
+#          target: Android32
 
-        - name: Android64
+        - name: Android
           os: ubuntu-latest
           target: Android64
 
@@ -79,9 +79,14 @@ jobs:
 
            The build workflow run goes in [#${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
-           ### [[DOWNLOAD MOD]](https://github.com/lil2kki/REMINA/releases/download/release/_lil2kki.remina.geode) | Android, iOS, macOS (manual install)
-
-           ### [[INSTALLER]](https://mega.nz/file/FlkHnKTB#KkZohqamY4_y22kXuE10__6yBbNcuGDDiSop2yPUH-Y) [[ZIP]](https://mega.nz/file/tslzlBDY#PSF9t01NtrgBNGmk3TppVbbE0jQCYSySgnQLJLQuBnE) | Windows full game
+           # Downloads
+           ## Executable stuff
+           For Windows there is installer and zipped game, for Android there is custom Geode Launcher.
+           https://disk.yandex.kz/d/kNs0_ctebnD__g
+           ## Mod package (manual install)
+           Yea for experienced users..
+           https://github.com/lil2kki/REMINA/releases/download/release/_lil2kki.remina.geode
+           ### Install guides by community: [Linux](https://discord.com/channels/1460005556918948017/1460005558563242067/1475962459817906428)
 
           tag: "release"
           prerelease: false

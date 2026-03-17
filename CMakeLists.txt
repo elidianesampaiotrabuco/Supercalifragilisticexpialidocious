@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.21)
-set(CMAKE_CXX_STANDARD 20) # intellisense feels bad at 23
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "iOS" OR IOS)
     set(CMAKE_OSX_ARCHITECTURES "arm64")
@@ -10,11 +9,11 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(here)
 
-file( DOWNLOAD "https://github.com/LatterRarity70/geode-download-dependency-cmake/blob/main/.cmake?raw=true" 
+file( DOWNLOAD "https://github.com/lil2kki/geode-download-dependency-cmake/blob/main/.cmake?raw=true" 
     ${CMAKE_CURRENT_BINARY_DIR}/geode-download-dependency.cmake)
 include(${CMAKE_CURRENT_BINARY_DIR}/geode-download-dependency.cmake)
 
-download_dependency_mod(LatterRarity70/geode-game-objects-factory user95401.game-objects-factory FALSE)
+download_dependency_mod(lil2kki/geode-game-objects-factory user95401.game-objects-factory FALSE)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
@@ -27,8 +26,16 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
     _WINSOCK_DEPRECATED_NO_WARNINGS
 )
 
+target_compile_options(${PROJECT_NAME} PRIVATE 
+-Wno-implicit-const-int-float-conversion 
+-Wno-undefined-bool-conversion
+)
+
 if (NOT DEFINED ENV{GEODE_SDK})
-    message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
+    message(WARNING "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
+    # git clone https://github.com/geode-sdk/geode ~/Geode-SDK
+    set(ENV{GEODE_SDK} "/home/codespace/Geode-SDK")
+    set(GEODE_TARGET_PLATFORM "Android64")
 else()
     message(STATUS "Found Geode: $ENV{GEODE_SDK}")
 endif()
